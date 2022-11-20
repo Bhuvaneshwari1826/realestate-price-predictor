@@ -56,15 +56,12 @@ def submit():
     School = request.form["School"]
     Hospital = request.form["Hospital"]
     
-    
     t = [[int(Area),int(City),int(Bedrooms),int(Resale),
-          
-          
-          
           
           int(Security),int(CarParking),int(School),int(Hospital)]]
     payload_scoring = {"input_data": [{"field": [['Area', 'City', 'No. of Bedrooms', 'Resale', '24X7Security',
        'CarParking', 'School', 'Hospital']], "values": t}]}
+    # add fields of ur dataset in above 2D list
 
     response_scoring = requests.post('<your scoring-end-point-url>', json=payload_scoring,headers={'Authorization': 'Bearer ' + mltoken})
     print("Scoring response")
