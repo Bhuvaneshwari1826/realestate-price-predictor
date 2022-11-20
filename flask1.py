@@ -12,7 +12,7 @@ import json
 import requests
 
 # NOTE: you must manually set API_KEY below using information retrieved from your IBM Cloud account.
-API_KEY = "btUh88UVuo6ou9IbjGNjIobAWka7hi_33yWXfN_ZIepo"
+API_KEY = "<your API_KEY>"
 token_response = requests.post('https://iam.cloud.ibm.com/identity/token', data={"apikey":
  API_KEY, "grant_type": 'urn:ibm:params:oauth:grant-type:apikey'})
 mltoken = token_response.json()["access_token"]
@@ -66,7 +66,7 @@ def submit():
     payload_scoring = {"input_data": [{"field": [['Area', 'City', 'No. of Bedrooms', 'Resale', '24X7Security',
        'CarParking', 'School', 'Hospital']], "values": t}]}
 
-    response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/1709dd6f-d2f5-40d3-aa0d-5a177c8dd26d/predictions?version=2022-11-13', json=payload_scoring,headers={'Authorization': 'Bearer ' + mltoken})
+    response_scoring = requests.post('<your scoring-end-point-url>', json=payload_scoring,headers={'Authorization': 'Bearer ' + mltoken})
     print("Scoring response")
     predictions = response_scoring.json()
     print(predictions)
